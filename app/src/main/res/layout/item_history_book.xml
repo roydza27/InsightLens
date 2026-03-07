@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginHorizontal="16dp"
+    android:layout_marginBottom="10dp"
+    app:cardCornerRadius="@dimen/corner_large"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp"
+    android:foreground="?attr/selectableItemBackground">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="12dp">
+
+        <!-- Thumbnail -->
+        <ImageView
+            android:id="@+id/history_book_thumbnail"
+            android:layout_width="56dp"
+            android:layout_height="76dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bg_book_cover_placeholder"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="Book cover" />
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/history_book_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:textColor="@color/text_primary"
+            android:textSize="15sp"
+            android:textStyle="bold"
+            android:maxLines="2"
+            android:ellipsize="end"
+            app:layout_constraintStart_toEndOf="@id/history_book_thumbnail"
+            app:layout_constraintEnd_toStartOf="@id/history_book_arrow"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/history_book_subtitle" />
+
+        <!-- Author • timestamp -->
+        <TextView
+            android:id="@+id/history_book_subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginTop="4dp"
+            android:textColor="@color/text_secondary"
+            android:textSize="13sp"
+            android:maxLines="1"
+            android:ellipsize="end"
+            app:layout_constraintStart_toEndOf="@id/history_book_thumbnail"
+            app:layout_constraintEnd_toStartOf="@id/history_book_arrow"
+            app:layout_constraintTop_toBottomOf="@id/history_book_title"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- Chevron arrow -->
+        <ImageView
+            android:id="@+id/history_book_arrow"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/ic_chevron_right"
+            app:tint="@color/text_secondary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            android:contentDescription="View details" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>

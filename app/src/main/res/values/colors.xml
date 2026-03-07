@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Primary Brand Colors -->
+    <color name="primary_blue">#2D4EF5</color>
+    <color name="primary_blue_dark">#1A3ACC</color>
+
+    <!-- Backgrounds -->
+    <color name="background_white">#FFFFFF</color>
+    <color name="card_background">#FFFFFF</color>
+
+    <!-- Neutral Tones -->
+    <color name="light_gray">#F2F3F7</color>
+    <color name="divider">#E8EAED</color>
+
+    <!-- Text Colors -->
+    <color name="text_primary">#1A1D2E</color>
+    <color name="text_secondary">#7A7F9A</color>
+
+    <!-- Accent -->
+    <color name="accent_blue">#2D4EF5</color>
+
+    <!-- Transparent overlays -->
+    <color name="scan_overlay_bg">#99000000</color>
+    <color name="scan_card_bg">#CC1A1D2E</color>
+    <color name="tip_card_bg">#F0F3FF</color>
+    <color name="icon_bg_light">#E8ECFF</color>
+    <color name="star_gold">#F5A623</color>
+    <color name="dismiss_bg">#F2F3F7</color>
+    <color name="splash_bg">#F2F3F7</color>
+    <color name="scan_frame_white">#FFFFFFFF</color>
+    <color name="bottom_nav_color_selector">#000000</color>
+
+</resources>

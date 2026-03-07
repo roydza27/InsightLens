@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TASK 65: History layout root -->
+<androidx.coordinatorlayout.widget.CoordinatorLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/light_gray">
+
+    <!-- Main content -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Top bar -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topbar_height"
+            android:paddingStart="@dimen/spacing_md"
+            android:paddingEnd="@dimen/spacing_md"
+            android:background="@color/background_white">
+
+            <ImageView
+                android:id="@+id/history_back_btn"
+                android:layout_width="@dimen/icon_small"
+                android:layout_height="@dimen/icon_small"
+                android:src="@drawable/ic_arrow_back"
+                android:contentDescription="@string/back"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:tint="@color/text_primary" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/scan_history"
+                style="@style/Text.TitleMedium"
+                android:textSize="18sp"
+                android:gravity="center"
+                app:layout_constraintStart_toEndOf="@+id/history_back_btn"
+                app:layout_constraintEnd_toStartOf="@+id/history_search_btn"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <ImageView
+                android:id="@+id/history_search_btn"
+                android:layout_width="@dimen/icon_medium"
+                android:layout_height="@dimen/icon_medium"
+                android:src="@drawable/ic_search"
+                android:contentDescription="Search"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:tint="@color/text_primary" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- TASK 66: Tab layout -->
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/history_tabs"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_white"
+            app:tabSelectedTextColor="@color/primary_blue"
+            app:tabTextColor="@color/text_secondary"
+            app:tabIndicatorColor="@color/primary_blue"
+            app:tabIndicatorHeight="2dp"
+            app:tabMode="scrollable"
+            app:tabGravity="fill">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/all_scans" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/books" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/articles" />
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/documents" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+        <!-- TASK 67: History RecyclerView (vertical list) -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/history_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:paddingStart="@dimen/spacing_md"
+            android:paddingEnd="@dimen/spacing_md"
+            android:paddingTop="@dimen/spacing_md"
+            android:paddingBottom="80dp"
+            android:clipToPadding="false"
+            android:background="@color/light_gray"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+    </LinearLayout>
+
+    <!-- TASK 68: Floating scan button (FAB) -->
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/history_fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/spacing_lg"
+        android:src="@drawable/ic_scan"
+        android:contentDescription="@string/scan"
+        app:backgroundTint="@color/primary_blue"
+        app:tint="@color/background_white"
+        app:fabSize="normal"
+        app:layout_anchor="@android:id/content"
+        app:layout_anchorGravity="bottom|end" />
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

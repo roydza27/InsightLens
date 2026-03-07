@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="140dp"
+    android:layout_height="200dp"
+    android:layout_marginEnd="12dp"
+    app:cardCornerRadius="@dimen/corner_large"
+    app:cardElevation="0dp"
+    app:strokeWidth="0dp"
+    android:foreground="?attr/selectableItemBackground">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Book thumbnail -->
+        <ImageView
+            android:id="@+id/item_thumbnail"
+            android:layout_width="match_parent"
+            android:layout_height="130dp"
+            android:scaleType="centerCrop"
+            android:background="@drawable/bg_book_cover_placeholder"
+            android:contentDescription="Book cover" />
+
+        <!-- Title + timestamp -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <TextView
+                android:id="@+id/item_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/text_primary"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:maxLines="2"
+                android:ellipsize="end" />
+
+            <TextView
+                android:id="@+id/item_timestamp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:textColor="@color/text_secondary"
+                android:textSize="11sp"
+                android:maxLines="1"
+                android:ellipsize="end" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

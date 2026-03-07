@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TASK 49: Scan failed dialog layout -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:background="@drawable/bg_dialog"
+    android:paddingStart="@dimen/spacing_lg"
+    android:paddingEnd="@dimen/spacing_lg"
+    android:paddingTop="@dimen/spacing_xl"
+    android:paddingBottom="@dimen/spacing_xl">
+
+    <!-- Drag handle at top -->
+    <View
+        android:layout_width="40dp"
+        android:layout_height="4dp"
+        android:background="@drawable/bg_drag_handle"
+        android:layout_marginBottom="@dimen/spacing_lg" />
+
+    <!-- TASK 50: Warning icon with circle background -->
+    <FrameLayout
+        android:layout_width="64dp"
+        android:layout_height="64dp"
+        android:background="@drawable/bg_icon_circle_blue">
+
+        <ImageView
+            android:id="@+id/dialog_warning_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_gravity="center"
+            android:src="@drawable/ic_warning"
+            android:contentDescription="" />
+    </FrameLayout>
+
+    <!-- TASK 51: Title text -->
+    <TextView
+        android:id="@+id/dialog_title"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/scan_failed_title"
+        style="@style/Text.TitleMedium"
+        android:textSize="20sp"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/spacing_md" />
+
+    <!-- TASK 52: Description text -->
+    <TextView
+        android:id="@+id/dialog_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/scan_failed_desc"
+        style="@style/Text.Body"
+        android:textSize="14sp"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/spacing_sm"
+        android:lineSpacingMultiplier="1.4" />
+
+    <!-- TASK 53: Retry button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dialog_retry_btn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/retry_scan"
+        android:backgroundTint="@color/primary_blue"
+        android:textColor="@color/background_white"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/spacing_lg"
+        app:cornerRadius="@dimen/corner_large"
+        app:icon="@drawable/ic_retry"
+        app:iconTint="@color/background_white"
+        app:iconGravity="textStart" />
+
+    <!-- TASK 54: Dismiss button -->
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dialog_dismiss_btn"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:text="@string/dismiss"
+        android:backgroundTint="@color/dismiss_bg"
+        android:textColor="@color/text_primary"
+        android:textSize="16sp"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/spacing_sm"
+        app:cornerRadius="@dimen/corner_large"
+        app:strokeWidth="0dp" />
+
+</LinearLayout>

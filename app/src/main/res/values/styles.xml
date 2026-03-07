@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <!-- Base App Theme -->
+    <style name="AppTheme" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <item name="colorPrimary">@color/primary_blue</item>
+        <item name="colorPrimaryDark">@color/primary_blue_dark</item>
+        <item name="colorAccent">@color/accent_blue</item>
+        <item name="android:windowBackground">@color/background_white</item>
+        <item name="android:statusBarColor">@color/background_white</item>
+    </style>
+
+    <!-- Typography System -->
+    <style name="Text.TitleLarge">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">28sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:letterSpacing">-0.02</item>
+    </style>
+
+    <style name="Text.TitleMedium">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">20sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <style name="Text.Body">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:lineSpacingMultiplier">1.4</item>
+    </style>
+
+    <style name="Text.Subtitle">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="Text.Caption">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="android:textSize">12sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+    </style>
+
+    <style name="Text.Button">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">15sp</item>
+        <item name="android:textColor">@color/background_white</item>
+        <item name="android:letterSpacing">0.01</item>
+    </style>
+
+    <style name="Text.SectionHeader">
+        <item name="android:fontFamily">sans-serif-medium</item>
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:letterSpacing">-0.01</item>
+    </style>
+
+    <!-- Component Styles -->
+    <style name="CardStyle" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/corner_large</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="cardBackgroundColor">@color/card_background</item>
+    </style>
+
+    <style name="PrimaryButton" parent="Widget.MaterialComponents.Button">
+        <item name="android:backgroundTint">@color/primary_blue</item>
+        <item name="cornerRadius">@dimen/corner_large</item>
+        <item name="android:textAppearance">@style/Text.Button</item>
+        <item name="android:paddingTop">@dimen/spacing_md</item>
+        <item name="android:paddingBottom">@dimen/spacing_md</item>
+    </style>
+
+    <style name="SecondaryButton" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:backgroundTint">@color/light_gray</item>
+        <item name="cornerRadius">@dimen/corner_large</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:paddingTop">@dimen/spacing_md</item>
+        <item name="android:paddingBottom">@dimen/spacing_md</item>
+        <item name="strokeColor">@android:color/transparent</item>
+    </style>
+
+    <style name="BottomNavStyle" parent="Widget.MaterialComponents.BottomNavigationView">
+        <item name="itemIconTint">@color/bottom_nav_color_selector</item>
+        <item name="itemTextColor">@color/bottom_nav_color_selector</item>
+    </style>
+
+</resources>

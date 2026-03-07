@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Spacing Scale -->
+    <dimen name="spacing_xs">4dp</dimen>
+    <dimen name="spacing_sm">8dp</dimen>
+    <dimen name="spacing_md">16dp</dimen>
+    <dimen name="spacing_lg">24dp</dimen>
+    <dimen name="spacing_xl">32dp</dimen>
+
+    <!-- Corner Radii -->
+    <dimen name="corner_small">8dp</dimen>
+    <dimen name="corner_medium">16dp</dimen>
+    <dimen name="corner_large">24dp</dimen>
+
+    <!-- Icon Sizes -->
+    <dimen name="icon_small">20dp</dimen>
+    <dimen name="icon_medium">24dp</dimen>
+    <dimen name="icon_large">32dp</dimen>
+
+    <!-- Component-specific dimensions -->
+    <dimen name="topbar_height">56dp</dimen>
+    <dimen name="bottom_nav_height">64dp</dimen>
+    <dimen name="card_elevation">4dp</dimen>
+    <dimen name="capture_button_size">72dp</dimen>
+    <dimen name="icon_button_size">48dp</dimen>
+    <dimen name="book_cover_width">160dp</dimen>
+    <dimen name="book_cover_height">220dp</dimen>
+    <dimen name="history_thumbnail_size">64dp</dimen>
+    <dimen name="fab_size">56dp</dimen>
+    <dimen name="logo_size">100dp</dimen>
+    <dimen name="recent_card_width">150dp</dimen>
+    <dimen name="recent_card_height">170dp</dimen>
+    <dimen name="progress_bar_height">6dp</dimen>
+    <dimen name="scan_corner_size">30dp</dimen>
+    <dimen name="scan_corner_stroke">4dp</dimen>
+</resources>

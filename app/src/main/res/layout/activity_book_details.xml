@@ -1,0 +1,326 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TASK 55: Root is NestedScrollView -->
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_white">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- TASK 56: Top bar with back, title, share, bookmark -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/topbar_height"
+            android:paddingStart="@dimen/spacing_md"
+            android:paddingEnd="@dimen/spacing_md"
+            android:background="@color/background_white">
+
+            <!-- Back button -->
+            <ImageView
+                android:id="@+id/details_back_btn"
+                android:layout_width="@dimen/icon_button_size"
+                android:layout_height="@dimen/icon_button_size"
+                android:src="@drawable/ic_menu"
+                android:padding="@dimen/spacing_sm"
+                android:contentDescription="@string/back"
+                android:scaleType="center"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:tint="@color/text_primary" />
+
+            <!-- Title -->
+            <TextView
+                android:id="@+id/details_topbar_title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="@string/book_details"
+                style="@style/Text.TitleMedium"
+                android:textSize="18sp"
+                android:gravity="center"
+                android:layout_marginStart="@dimen/spacing_md"
+                android:layout_marginEnd="@dimen/spacing_md"
+                app:layout_constraintStart_toEndOf="@+id/details_back_btn"
+                app:layout_constraintEnd_toStartOf="@+id/details_share_btn"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent" />
+
+            <!-- Share button -->
+            <ImageView
+                android:id="@+id/details_share_btn"
+                android:layout_width="@dimen/icon_button_size"
+                android:layout_height="@dimen/icon_button_size"
+                android:src="@drawable/ic_share"
+                android:padding="@dimen/spacing_sm"
+                android:contentDescription="@string/share"
+                android:scaleType="center"
+                app:layout_constraintEnd_toStartOf="@+id/details_bookmark_btn"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:tint="@color/text_primary" />
+
+            <!-- Bookmark button -->
+            <ImageView
+                android:id="@+id/details_bookmark_btn"
+                android:layout_width="@dimen/icon_button_size"
+                android:layout_height="@dimen/icon_button_size"
+                android:src="@drawable/ic_bookmark"
+                android:padding="@dimen/spacing_sm"
+                android:contentDescription="@string/bookmark"
+                android:scaleType="center"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:tint="@color/text_primary" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Book cover section with light blue bg -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="280dp"
+            android:background="@color/light_gray"
+            android:gravity="center">
+
+            <!-- TASK 57: Book cover image -->
+            <ImageView
+                android:id="@+id/details_book_cover"
+                android:layout_width="@dimen/book_cover_width"
+                android:layout_height="@dimen/book_cover_height"
+                android:src="@drawable/bg_book_cover_placeholder"
+                android:contentDescription="Book Cover"
+                android:scaleType="centerCrop" />
+
+        </LinearLayout>
+
+        <!-- Book info content section -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/spacing_lg"
+            android:paddingEnd="@dimen/spacing_lg"
+            android:paddingTop="@dimen/spacing_lg"
+            android:background="@color/background_white">
+
+            <!-- Scan History label -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_md">
+
+                <ImageView
+                    android:id="@+id/details_history_back"
+                    android:layout_width="@dimen/icon_small"
+                    android:layout_height="@dimen/icon_small"
+                    android:src="@drawable/ic_history"
+                    android:contentDescription=""
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:tint="@color/text_primary" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:text="@string/scan_history"
+                    style="@style/Text.TitleMedium"
+                    android:textSize="16sp"
+                    android:layout_marginStart="@dimen/spacing_sm"
+                    app:layout_constraintStart_toEndOf="@+id/details_history_back"
+                    app:layout_constraintEnd_toStartOf="@+id/details_search_btn"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent" />
+
+                <ImageView
+                    android:id="@+id/details_search_btn"
+                    android:layout_width="@dimen/icon_medium"
+                    android:layout_height="@dimen/icon_medium"
+                    android:src="@drawable/ic_search"
+                    android:contentDescription="Search"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:layout_constraintBottom_toBottomOf="parent"
+                    app:tint="@color/text_primary" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="@color/divider"
+                android:layout_marginBottom="@dimen/spacing_md" />
+
+            <!-- TASK 58: Book title -->
+            <TextView
+                android:id="@+id/details_book_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="The Midnight Library"
+                style="@style/Text.TitleLarge"
+                android:textSize="24sp"
+                android:gravity="center"
+                android:layout_gravity="center_horizontal" />
+
+            <!-- TASK 59: Author text -->
+            <TextView
+                android:id="@+id/details_book_author"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Matt Haig"
+                style="@style/Text.Body"
+                android:textColor="@color/primary_blue"
+                android:textSize="16sp"
+                android:layout_marginTop="@dimen/spacing_xs"
+                android:layout_gravity="center_horizontal" />
+
+            <!-- TASK 60: Rating row -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="center_vertical"
+                android:layout_marginTop="@dimen/spacing_sm"
+                android:layout_gravity="center_horizontal">
+
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_star" android:contentDescription="" />
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_star" android:contentDescription="" />
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_star" android:contentDescription="" />
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_star" android:contentDescription="" />
+                <ImageView android:layout_width="16dp" android:layout_height="16dp" android:src="@drawable/ic_star" android:contentDescription="" />
+
+                <TextView
+                    android:id="@+id/details_rating_text"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="4.3 (2.1k reviews)"
+                    style="@style/Text.Caption"
+                    android:layout_marginStart="@dimen/spacing_xs" />
+            </LinearLayout>
+
+            <!-- TASK 61: Book info card -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/details_info_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/spacing_lg"
+                app:cardCornerRadius="@dimen/corner_medium"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/divider"
+                app:strokeWidth="1dp"
+                app:cardBackgroundColor="@color/card_background">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:paddingTop="@dimen/spacing_sm"
+                    android:paddingBottom="@dimen/spacing_sm">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/book_info"
+                        style="@style/Text.Caption"
+                        android:textColor="@color/text_secondary"
+                        android:letterSpacing="0.12"
+                        android:layout_marginStart="@dimen/spacing_md"
+                        android:layout_marginTop="@dimen/spacing_sm"
+                        android:layout_marginBottom="@dimen/spacing_sm" />
+
+                    <!-- TASK 62: Book info rows using component -->
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider" />
+
+                    <include
+                        android:id="@+id/info_row_publisher"
+                        layout="@layout/component_book_info_row" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider" />
+
+                    <include
+                        android:id="@+id/info_row_year"
+                        layout="@layout/component_book_info_row" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider" />
+
+                    <include
+                        android:id="@+id/info_row_isbn"
+                        layout="@layout/component_book_info_row" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:background="@color/divider" />
+
+                    <include
+                        android:id="@+id/info_row_pages"
+                        layout="@layout/component_book_info_row" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- TASK 63: Book description section -->
+            <TextView
+                android:id="@+id/details_about_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/about_book"
+                style="@style/Text.SectionHeader"
+                android:layout_marginTop="@dimen/spacing_lg" />
+
+            <TextView
+                android:id="@+id/details_about_body"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Between life and death there is a library, and within that library, the shelves go on forever. Every book provides a chance to try another life you could have lived. To see how things would be if you had made other choices…"
+                style="@style/Text.Body"
+                android:textSize="14sp"
+                android:lineSpacingMultiplier="1.5"
+                android:layout_marginTop="@dimen/spacing_sm" />
+
+            <!-- TASK 64: Purchase button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/details_purchase_btn"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:text="@string/purchase_book"
+                android:backgroundTint="@color/primary_blue"
+                android:textColor="@color/background_white"
+                android:textSize="16sp"
+                android:textStyle="bold"
+                android:layout_marginTop="@dimen/spacing_lg"
+                android:layout_marginBottom="@dimen/spacing_lg"
+                app:cornerRadius="@dimen/corner_large"
+                app:icon="@drawable/ic_external_link"
+                app:iconTint="@color/background_white"
+                app:iconGravity="textEnd" />
+
+            <!-- Last analyzed footer -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="LAST ANALYZED ON OCT 24, 2023 • 14:32 PM"
+                style="@style/Text.Caption"
+                android:gravity="center"
+                android:letterSpacing="0.08"
+                android:layout_marginBottom="@dimen/spacing_lg" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

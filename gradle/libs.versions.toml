@@ -1,0 +1,50 @@
+[versions]
+agp = "8.7.0"
+kotlin = "1.9.24"
+ksp = "1.9.24-1.0.20"
+coreKtx = "1.15.0"
+appcompat = "1.7.0"
+material = "1.12.0"
+activity = "1.9.3"
+constraintlayout = "2.2.1"
+junit = "4.13.2"
+junitExt = "1.2.1"
+espresso = "3.6.1"
+room = "2.6.1"
+camerax = "1.3.4"
+mlkit = "16.0.1"
+retrofit = "2.11.0"
+lifecycle = "2.8.7"
+coroutines = "1.8.1"
+glide = "4.16.0"
+fragment = "1.8.6"
+
+[libraries]
+androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+androidx-appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "appcompat" }
+material = { group = "com.google.android.material", name = "material", version.ref = "material" }
+androidx-activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
+androidx-constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+junit = { group = "junit", name = "junit", version.ref = "junit" }
+androidx-junit = { group = "androidx.test.ext", name = "junit", version.ref = "junitExt" }
+androidx-espresso-core = { group = "androidx.test.espresso", name = "espresso-core", version.ref = "espresso" }
+room-runtime = { group = "androidx.room", name = "room-runtime", version.ref = "room" }
+room-ktx = { group = "androidx.room", name = "room-ktx", version.ref = "room" }
+room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "room" }
+camera-core = { group = "androidx.camera", name = "camera-core", version.ref = "camerax" }
+camera-camera2 = { group = "androidx.camera", name = "camera-camera2", version.ref = "camerax" }
+camera-lifecycle = { group = "androidx.camera", name = "camera-lifecycle", version.ref = "camerax" }
+camera-view = { group = "androidx.camera", name = "camera-view", version.ref = "camerax" }
+mlkit-text-recognition = { group = "com.google.mlkit", name = "text-recognition", version.ref = "mlkit" }
+retrofit = { group = "com.squareup.retrofit2", name = "retrofit", version.ref = "retrofit" }
+retrofit-gson = { group = "com.squareup.retrofit2", name = "converter-gson", version.ref = "retrofit" }
+lifecycle-viewmodel = { group = "androidx.lifecycle", name = "lifecycle-viewmodel-ktx", version.ref = "lifecycle" }
+lifecycle-runtime = { group = "androidx.lifecycle", name = "lifecycle-runtime-ktx", version.ref = "lifecycle" }
+coroutines-android = { group = "org.jetbrains.kotlinx", name = "kotlinx-coroutines-android", version.ref = "coroutines" }
+glide = { group = "com.github.bumptech.glide", name = "glide", version.ref = "glide" }
+fragment-ktx = { group = "androidx.fragment", name = "fragment-ktx", version.ref = "fragment" }
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "agp" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }

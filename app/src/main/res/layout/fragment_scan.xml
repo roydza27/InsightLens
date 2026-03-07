@@ -1,0 +1,283 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- TASK 39: Root is ConstraintLayout -->
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/text_primary">
+
+    <!-- Top bar overlay on camera -->
+    <include
+        android:id="@+id/scan_topbar"
+        layout="@layout/component_topbar"
+        android:layout_width="0dp"
+        android:layout_height="@dimen/topbar_height"
+        android:background="#00000000"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <!-- TASK 40: Camera preview container (FrameLayout) -->
+    <FrameLayout
+        android:id="@+id/scan_camera_container"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:background="@color/text_primary"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <!-- Camera preview placeholder (PreviewView goes here in real implementation) -->
+        <View
+            android:id="@+id/scan_preview_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#505060" />
+
+        <!-- Analyzing object pill indicator at top -->
+        <LinearLayout
+            android:id="@+id/scan_analyzing_pill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:background="@drawable/bg_pill_white"
+            android:paddingStart="@dimen/spacing_md"
+            android:paddingEnd="@dimen/spacing_md"
+            android:paddingTop="@dimen/spacing_sm"
+            android:paddingBottom="@dimen/spacing_sm"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="@dimen/spacing_xl">
+
+            <ProgressBar
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:indeterminateTint="@color/primary_blue"
+                android:layout_marginEnd="@dimen/spacing_sm" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/analyzing_object"
+                style="@style/Text.Body"
+                android:textColor="@color/primary_blue"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </FrameLayout>
+
+    <!-- TASK 41: Scan overlay with 4 corner views -->
+    <View
+        android:id="@+id/scan_corner_tl"
+        android:layout_width="@dimen/scan_corner_size"
+        android:layout_height="@dimen/scan_corner_size"
+        android:background="@drawable/bg_scan_corner_tl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintVertical_bias="0.18"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
+        android:id="@+id/scan_corner_tr"
+        android:layout_width="@dimen/scan_corner_size"
+        android:layout_height="@dimen/scan_corner_size"
+        android:background="@drawable/bg_scan_corner_tr"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintVertical_bias="0.18"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
+    <View
+        android:id="@+id/scan_corner_bl"
+        android:layout_width="@dimen/scan_corner_size"
+        android:layout_height="@dimen/scan_corner_size"
+        android:background="@drawable/bg_scan_corner_bl"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.12"
+        app:layout_constraintVertical_bias="0.62"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <View
+        android:id="@+id/scan_corner_br"
+        android:layout_width="@dimen/scan_corner_size"
+        android:layout_height="@dimen/scan_corner_size"
+        android:background="@drawable/bg_scan_corner_br"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHorizontal_bias="0.88"
+        app:layout_constraintVertical_bias="0.62"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Center guidance card -->
+    <LinearLayout
+        android:id="@+id/scan_guidance_card"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:background="@drawable/bg_scan_card"
+        android:paddingStart="@dimen/spacing_xl"
+        android:paddingEnd="@dimen/spacing_xl"
+        android:paddingTop="@dimen/spacing_md"
+        android:paddingBottom="@dimen/spacing_md"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintVertical_bias="0.42">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/align_object"
+            style="@style/Text.TitleMedium"
+            android:textColor="@color/background_white"
+            android:textSize="18sp"
+            android:gravity="center" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/processing_auto"
+            style="@style/Text.Body"
+            android:textColor="#AAffffff"
+            android:textSize="13sp"
+            android:gravity="center"
+            android:layout_marginTop="@dimen/spacing_xs" />
+    </LinearLayout>
+
+    <!-- TASK 42-44: Scanning info card at bottom -->
+    <LinearLayout
+        android:id="@+id/scan_info_container"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="@dimen/spacing_lg"
+        android:paddingEnd="@dimen/spacing_lg"
+        android:paddingTop="@dimen/spacing_md"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/scan_controls_container">
+
+        <!-- TASK 43: Scanning text -->
+        <TextView
+            android:id="@+id/scan_status_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/scanning"
+            style="@style/Text.TitleMedium"
+            android:textColor="@color/background_white"
+            android:textSize="18sp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_vertical"
+            android:layout_marginTop="@dimen/spacing_xs">
+
+            <TextView
+                android:id="@+id/scan_status_subtitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="@string/identifying_textures"
+                style="@style/Text.Body"
+                android:textColor="#AAffffff"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/scan_percent_text"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="78%"
+                style="@style/Text.TitleMedium"
+                android:textColor="@color/background_white"
+                android:textSize="22sp" />
+        </LinearLayout>
+
+        <!-- TASK 44: Progress bar -->
+        <ProgressBar
+            android:id="@+id/scan_progress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/progress_bar_height"
+            android:max="100"
+            android:progress="78"
+            android:progressTint="@color/primary_blue"
+            android:progressBackgroundTint="#50FFFFFF"
+            android:layout_marginTop="@dimen/spacing_sm"
+            android:layout_marginBottom="@dimen/spacing_md" />
+
+    </LinearLayout>
+
+    <!-- TASK 45: Bottom controls container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/scan_controls_container"
+        android:layout_width="0dp"
+        android:layout_height="100dp"
+        android:paddingBottom="@dimen/spacing_md"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <!-- TASK 46: Gallery button -->
+        <ImageButton
+            android:id="@+id/scan_gallery_btn"
+            android:layout_width="@dimen/icon_button_size"
+            android:layout_height="@dimen/icon_button_size"
+            android:src="@drawable/ic_gallery"
+            android:background="@drawable/bg_circle_dark"
+            android:padding="@dimen/spacing_sm"
+            android:contentDescription="Gallery"
+            android:scaleType="center"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.2"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <!-- TASK 47: Capture button (large center) -->
+        <ImageButton
+            android:id="@+id/scan_capture_btn"
+            android:layout_width="@dimen/capture_button_size"
+            android:layout_height="@dimen/capture_button_size"
+            android:src="@drawable/ic_camera_shutter"
+            android:background="@drawable/bg_circle_white"
+            android:padding="@dimen/spacing_xs"
+            android:contentDescription="Capture"
+            android:scaleType="fitCenter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
+
+        <!-- TASK 48: Flash button -->
+        <ImageButton
+            android:id="@+id/scan_flash_btn"
+            android:layout_width="@dimen/icon_button_size"
+            android:layout_height="@dimen/icon_button_size"
+            android:src="@drawable/ic_flash"
+            android:background="@drawable/bg_circle_dark"
+            android:padding="@dimen/spacing_sm"
+            android:contentDescription="Flash"
+            android:scaleType="center"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintHorizontal_bias="0.8"
+            app:layout_constraintStart_toStartOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
