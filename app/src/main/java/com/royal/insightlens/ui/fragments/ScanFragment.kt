@@ -8,7 +8,8 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageButton
+import android.widget.ImageView
+import android.widget.LinearLayout
 import android.widget.ProgressBar
 import android.widget.TextView
 import android.widget.Toast
@@ -20,7 +21,6 @@ import androidx.camera.core.ImageProxy
 import androidx.camera.core.Preview
 import androidx.camera.lifecycle.ProcessCameraProvider
 import androidx.camera.view.PreviewView
-import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -54,16 +54,19 @@ class ScanFragment : Fragment() {
         )
     }
 
+    // ─── Views ─────────────────────────────────────────────────────────────
+    // All types match the new LinearLayout-based fragment_scan.xml
     private lateinit var previewView: PreviewView
-    private lateinit var analyzingPill: ConstraintLayout
-    private lateinit var guidanceCard: ConstraintLayout
-    private lateinit var infoContainer: ConstraintLayout
+    private lateinit var analyzingPill: LinearLayout   // was ConstraintLayout
+    private lateinit var guidanceCard: LinearLayout    // was ConstraintLayout
+    private lateinit var infoContainer: LinearLayout   // was ConstraintLayout
     private lateinit var statusTitle: TextView
     private lateinit var percentText: TextView
     private lateinit var progressBar: ProgressBar
-    private lateinit var captureBtn: ImageButton
-    private lateinit var flashBtn: ImageButton
+    private lateinit var captureBtn: ImageView         // was ImageButton
+    private lateinit var flashBtn: ImageView           // was ImageButton
 
+    // ─── Camera ────────────────────────────────────────────────────────────
     private lateinit var cameraExecutor: ExecutorService
     private lateinit var textRecognizer: TextRecognizer
     private var flashEnabled = false
@@ -79,6 +82,8 @@ class ScanFragment : Fragment() {
         ).show()
     }
 
+    // ─── Lifecycle ─────────────────────────────────────────────────────────
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -93,17 +98,21 @@ class ScanFragment : Fragment() {
         observeUiState()
     }
 
+    // ─── View Binding ───────────────────────────────────────────────────────
+
     private fun bindViews(view: View) {
-        previewView    = view.findViewById(R.id.scan_preview_view)
-        analyzingPill  = view.findViewById(R.id.scan_analyzing_pill)
-        guidanceCard   = view.findViewById(R.id.scan_guidance_card)
-        infoContainer  = view.findViewById(R.id.scan_info_container)
-        statusTitle    = view.findViewById(R.id.scan_status_title)
-        percentText    = view.findViewById(R.id.scan_percent_text)
-        progressBar    = view.findViewById(R.id.scan_progress)
-        captureBtn     = view.findViewById(R.id.scan_capture_btn)
-        flashBtn       = view.findViewById(R.id.scan_flash_btn)
+        previewView   = view.findViewById(R.id.scan_preview_view)
+        analyzingPill = view.findViewById(R.id.scan_analyzing_pill)
+        guidanceCard  = view.findViewById(R.id.scan_guidance_card)
+        infoContainer = view.findViewById(R.id.scan_info_container)
+        statusTitle   = view.findViewById(R.id.scan_status_title)
+        percentText   = view.findViewById(R.id.scan_percent_text)
+        progressBar   = view.findViewById(R.id.scan_progress)
+        captureBtn    = view.findViewById(R.id.scan_capture_btn)
+        flashBtn      = view.findViewById(R.id.scan_flash_btn)
     }
+
+    // ─── Camera Setup ───────────────────────────────────────────────────────
 
     private fun setupCamera() {
         cameraExecutor = Executors.newSingleThreadExecutor()
@@ -147,9 +156,11 @@ class ScanFragment : Fragment() {
                 imageAnalysis
             )
         } catch (e: Exception) {
-            Log.e(TAG, "Failed to bind camera use cases: ${e.message}")
+            Log.e(TAG, "Failed to bind camera: ${e.message}")
         }
     }
+
+    // ─── Frame Processing ───────────────────────────────────────────────────
 
     private fun processFrame(imageProxy: ImageProxy) {
         val mediaImage = imageProxy.image
@@ -173,6 +184,8 @@ class ScanFragment : Fragment() {
             }
     }
 
+    // ─── Click Listeners ────────────────────────────────────────────────────
+
     private fun setupClickListeners() {
         captureBtn.setOnClickListener { viewModel.onManualCapture() }
         flashBtn.setOnClickListener {
@@ -182,6 +195,8 @@ class ScanFragment : Fragment() {
             )
         }
     }
+
+    // ─── UI State ───────────────────────────────────────────────────────────
 
     private fun observeUiState() {
         viewLifecycleOwner.lifecycleScope.launch {
@@ -201,7 +216,6 @@ class ScanFragment : Fragment() {
                 percentText.text         = ""
                 statusTitle.setText(R.string.scan_status_ready)
             }
-
             is ScanUiState.Scanning -> {
                 val pct = (state.progress * 100).toInt()
                 analyzingPill.visibility = View.VISIBLE
@@ -211,7 +225,6 @@ class ScanFragment : Fragment() {
                 percentText.text         = getString(R.string.percent_format, pct)
                 statusTitle.setText(R.string.scan_status_scanning)
             }
-
             is ScanUiState.Success -> {
                 analyzingPill.visibility = View.GONE
                 infoContainer.visibility = View.GONE
@@ -219,7 +232,6 @@ class ScanFragment : Fragment() {
                 intent.putExtra(BookDetailsActivity.EXTRA_VOLUME_ID, state.book.volumeId)
                 startActivity(intent)
             }
-
             is ScanUiState.NoMatch -> {
                 analyzingPill.visibility = View.GONE
                 infoContainer.visibility = View.VISIBLE
@@ -227,12 +239,10 @@ class ScanFragment : Fragment() {
                 percentText.text         = ""
                 statusTitle.setText(R.string.scan_status_no_match)
             }
-
             is ScanUiState.Error -> {
                 analyzingPill.visibility = View.GONE
                 showScanFailedDialog(state.message)
             }
-
             is ScanUiState.Cooldown -> {
                 analyzingPill.visibility = View.GONE
                 infoContainer.visibility = View.VISIBLE
@@ -243,29 +253,33 @@ class ScanFragment : Fragment() {
         }
     }
 
+    // ─── Scan Failed Dialog ─────────────────────────────────────────────────
+
     private fun showScanFailedDialog(message: String) {
         val dialog = com.google.android.material.bottomsheet.BottomSheetDialog(requireContext())
-        val dialogView = layoutInflater.inflate(R.layout.dialog_scan_failed, requireView() as ViewGroup, false)
+        val dialogView = layoutInflater.inflate(
+            R.layout.dialog_scan_failed, requireView() as ViewGroup, false
+        )
 
-        dialogView.findViewById<TextView>(R.id.dialog_description).text = message
+        dialogView.findViewById<TextView>(R.id.dialog_description)?.text = message
 
-        dialogView.findViewById<com.google.android.material.button.MaterialButton>(
-            R.id.dialog_retry_btn
-        ).setOnClickListener {
-            viewModel.onRetry()
-            dialog.dismiss()
-        }
+        dialogView.findViewById<android.widget.Button>(R.id.dialog_retry_btn)
+            .setOnClickListener {
+                viewModel.onRetry()
+                dialog.dismiss()
+            }
 
-        dialogView.findViewById<com.google.android.material.button.MaterialButton>(
-            R.id.dialog_dismiss_btn
-        ).setOnClickListener {
-            viewModel.onDismiss()
-            dialog.dismiss()
-        }
+        dialogView.findViewById<android.widget.Button>(R.id.dialog_dismiss_btn)
+            .setOnClickListener {
+                viewModel.onDismiss()
+                dialog.dismiss()
+            }
 
         dialog.setContentView(dialogView)
         dialog.show()
     }
+
+    // ─── Cleanup ────────────────────────────────────────────────────────────
 
     override fun onDestroyView() {
         super.onDestroyView()

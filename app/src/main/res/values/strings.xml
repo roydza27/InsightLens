@@ -108,5 +108,6 @@
     <string name="pages_format">%1$d pages</string>
     <string name="percent_format">%1$d%%</string>
     <string name="share_text">Check out \"%1$s\" by %2$s\n%3$s</string>
+    <string name="no_history_scans">No scans yet — all clear.</string>
 
 </resources>

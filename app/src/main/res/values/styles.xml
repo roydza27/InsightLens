@@ -10,6 +10,9 @@
         <item name="android:statusBarColor">@color/background_white</item>
     </style>
 
+    <!-- Base Text Style to support dot-notation inheritance -->
+    <style name="Text" parent="" />
+
     <!-- Typography System -->
     <style name="Text.TitleLarge">
         <item name="android:fontFamily">sans-serif-medium</item>

@@ -32,6 +32,8 @@ class BookRepository(private val bookDao: BookDao) {
      * Returns a Result wrapping the volumeId of the found/inserted book,
      * or a failure with the error.
      */
+
+
     suspend fun fetchBook(
         normalizedTitle: String,
         rawTitle: String,
@@ -98,6 +100,9 @@ class BookRepository(private val bookDao: BookDao) {
     }
 
     // ─── Observe (SSOT) ────────────────────────────────────────────────────
+
+
+
 
     // History screen
     fun observeAllBooks(): Flow<List<BookEntity>> =

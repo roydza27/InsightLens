@@ -29,14 +29,15 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
-        <!-- Camera preview placeholder (PreviewView goes here in real implementation) -->
-        <View
+        <!-- Camera Preview (FIXED) -->
+        <androidx.camera.view.PreviewView
             android:id="@+id/scan_preview_view"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:background="#505060" />
+            app:implementationMode="performance"
+            app:scaleType="fillCenter" />
 
-        <!-- Analyzing object pill indicator at top -->
+        <!-- Analyzing object pill indicator -->
         <LinearLayout
             android:id="@+id/scan_analyzing_pill"
             android:layout_width="wrap_content"

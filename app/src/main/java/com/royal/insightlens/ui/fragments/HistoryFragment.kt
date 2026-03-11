@@ -26,7 +26,9 @@ class HistoryFragment : Fragment() {
 
     private val viewModel: HistoryViewModel by viewModels {
         HistoryViewModel.Factory(
-            BookRepository(AppDatabase.getInstance(requireContext()).bookDao())
+            BookRepository(
+                AppDatabase.getInstance(requireContext()).bookDao()
+            )
         )
     }
 

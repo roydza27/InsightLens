@@ -1,7 +1,9 @@
 package com.royal.insightlens.ui.activities
 
 import android.os.Bundle
+import androidx.annotation.OptIn
 import androidx.appcompat.app.AppCompatActivity
+import androidx.camera.core.ExperimentalGetImage
 import androidx.fragment.app.Fragment
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.royal.insightlens.R
@@ -14,6 +16,7 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var bottomNav: BottomNavigationView
 
+    @OptIn(ExperimentalGetImage::class)
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -33,18 +36,20 @@ class MainActivity : AppCompatActivity() {
                     true
                 }
                 R.id.menu_scan -> {
-                    loadFragment(ScanFragment(), "SCAN")
+                    loadFragment(fragment = ScanFragment(), tag = "SCAN")
                     true
                 }
                 R.id.menu_history -> {
-                    loadFragment(HistoryFragment(), "HISTORY")
+                    loadFragment(fragment = HistoryFragment(), tag = "HISTORY")
                     true
                 }
                 R.id.menu_settings -> {
                     loadFragment(SettingsFragment(), "SETTINGS")
                     true
                 }
-                else -> false
+                else -> {
+                    false
+                }
             }
         }
     }

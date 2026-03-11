@@ -12,7 +12,7 @@
         android:layout_width="0dp"
         android:layout_height="220dp"
         android:alpha="0.6"
-        android:contentDescription=""
+        android:contentDescription="TODO"
         android:scaleType="centerCrop"
         android:src="@drawable/bg_splash_arch"
         app:layout_constraintBottom_toBottomOf="parent"

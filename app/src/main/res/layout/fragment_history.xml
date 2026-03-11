@@ -106,6 +106,21 @@
             android:background="@color/light_gray"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
+        <!-- Add directly below the RecyclerView in fragment_history.xml -->
+        <TextView
+            android:id="@+id/history_empty_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingTop="24dp"
+            android:paddingBottom="24dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="@string/no_history_scans"
+            android:textColor="@color/text_secondary"
+            android:textSize="15sp"
+            android:gravity="center"
+            android:visibility="gone" />
+
     </LinearLayout>
 
     <!-- TASK 68: Floating scan button (FAB) -->

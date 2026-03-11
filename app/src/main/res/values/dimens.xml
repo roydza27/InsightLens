@@ -33,4 +33,9 @@
     <dimen name="progress_bar_height">6dp</dimen>
     <dimen name="scan_corner_size">30dp</dimen>
     <dimen name="scan_corner_stroke">4dp</dimen>
+
+    <!-- button Dimensions -->
+    56dp
+    <dimen name="button_height">64dp</dimen>
+
 </resources>

@@ -27,8 +27,12 @@ class HistoryAdapter(
         val DiffCallback = object : DiffUtil.ItemCallback<HistoryListItem>() {
             override fun areItemsTheSame(a: HistoryListItem, b: HistoryListItem): Boolean {
                 return when {
-                    a is HistoryListItem.Header   && b is HistoryListItem.Header   -> a.label == b.label
-                    a is HistoryListItem.BookItem && b is HistoryListItem.BookItem -> a.book.volumeId == b.book.volumeId
+                    a is HistoryListItem.Header && b is HistoryListItem.Header ->
+                        a.label == b.label
+
+                    a is HistoryListItem.BookItem && b is HistoryListItem.BookItem ->
+                        a.book.id == b.book.id
+
                     else -> false
                 }
             }
@@ -86,6 +90,7 @@ class HistoryAdapter(
                 .placeholder(R.drawable.bg_book_cover_placeholder)
                 .error(R.drawable.bg_book_cover_placeholder)
                 .centerCrop()
+                .diskCacheStrategy(com.bumptech.glide.load.engine.DiskCacheStrategy.AUTOMATIC)
                 .into(thumbnail)
 
             itemView.setOnClickListener { onItemClick(book) }
@@ -95,9 +100,10 @@ class HistoryAdapter(
             val now  = System.currentTimeMillis()
             val diff = now - ts
             return when {
-                diff < 3_600_000   -> "${diff / 60_000} min ago"
-                diff < 86_400_000  -> SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date(ts))
-                else               -> SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date(ts))
+                diff < 60_000 -> "Just now"
+                diff < 3_600_000 -> "${diff / 60_000} min ago"
+                diff < 86_400_000 -> SimpleDateFormat("hh:mm a", Locale.getDefault()).format(Date(ts))
+                else -> SimpleDateFormat("MMM dd, yyyy", Locale.getDefault()).format(Date(ts))
             }
         }
     }
