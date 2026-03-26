@@ -33,7 +33,8 @@ data class VolumeInfoDto(
     @SerializedName("language")            val language: String? = null,
     @SerializedName("imageLinks")          val imageLinks: ImageLinksDto? = null,
     @SerializedName("canonicalVolumeLink") val canonicalVolumeLink: String? = null,
-    @SerializedName("infoLink")            val infoLink: String? = null
+    @SerializedName("infoLink")            val infoLink: String? = null,
+    @SerializedName("printType")           val printType: String? = null
 )
 
 // ─── ISBN identifiers ──────────────────────────────────────────────────────
