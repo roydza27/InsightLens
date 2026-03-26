@@ -110,4 +110,8 @@
     <string name="share_text">Check out \"%1$s\" by %2$s\n%3$s</string>
     <string name="no_history_scans">No scans yet — all clear.</string>
 
+    <!-- General UI strings (add only if missing) -->
+
+    <string name="search">Search</string>
+
 </resources>

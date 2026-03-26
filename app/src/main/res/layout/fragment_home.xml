@@ -77,7 +77,7 @@
                         android:layout_height="wrap_content"
                         android:text="@string/quick_scan"
                         style="@style/Text.TitleMedium"
-                        android:textColor="@color/background_white"
+                        android:textColor="@android:color/white"
                         android:textSize="22sp" />
 
                     <!-- TASK 31: Quick scan description -->
@@ -137,7 +137,8 @@
                             android:layout_height="@dimen/icon_medium"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_lightbulb"
-                            android:contentDescription="" />
+                            android:contentDescription=""
+                            app:tint="@color/primary_blue" />
                     </FrameLayout>
 
                     <LinearLayout

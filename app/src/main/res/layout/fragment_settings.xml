@@ -1,52 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- TASK 69: Settings layout root is NestedScrollView -->
-<androidx.core.widget.NestedScrollView
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/light_gray">
+    android:orientation="vertical"
+    android:background="@color/background_white">
 
-    <LinearLayout
+    <!-- Top Bar -->
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical">
+        android:layout_height="@dimen/topbar_height"
+        android:paddingStart="@dimen/spacing_sm"
+        android:paddingEnd="@dimen/spacing_md"
+        android:background="@color/background_white">
 
-        <!-- Top bar -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="@dimen/topbar_height"
-            android:paddingStart="@dimen/spacing_md"
-            android:paddingEnd="@dimen/spacing_md"
-            android:background="@color/background_white">
+        <ImageButton
+            android:id="@+id/settings_back_btn"
+            android:layout_width="@dimen/icon_button_size"
+            android:layout_height="@dimen/icon_button_size"
+            android:src="@drawable/ic_arrow_back"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/back"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:tint="@color/text_primary" />
 
-<!--            <ImageView-->
-<!--                android:id="@+id/settings_back_btn"-->
-<!--                android:layout_width="@dimen/icon_small"-->
-<!--                android:layout_height="@dimen/icon_small"-->
-<!--                android:src="@drawable/ic_arrow_back"-->
-<!--                android:contentDescription="@string/back"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent"-->
-<!--                app:tint="@color/text_primary" />-->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/settings"
+            style="@style/Text.TitleMedium"
+            android:textSize="20sp"
+            android:layout_marginStart="@dimen/spacing_xs"
+            app:layout_constraintStart_toEndOf="@+id/settings_back_btn"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-<!--            <TextView-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:text="@string/settings"-->
-<!--                style="@style/Text.TitleMedium"-->
-<!--                android:textSize="20sp"-->
-<!--                android:layout_marginStart="@dimen/spacing_md"-->
-<!--                app:layout_constraintStart_toEndOf="@+id/settings_back_btn"-->
-<!--                app:layout_constraintTop_toTopOf="parent"-->
-<!--                app:layout_constraintBottom_toBottomOf="parent" />-->
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <include  />
+    <!-- Scrollable Content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="@color/light_gray"
+        android:fillViewport="true">
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
-
-        <!-- TASK 70: Settings sections -->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -76,7 +77,6 @@
                 app:strokeWidth="0dp"
                 app:cardBackgroundColor="@color/card_background">
 
-                <!-- Guest Mode toggle row -->
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -85,10 +85,7 @@
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="@dimen/spacing_md"
-                        android:paddingEnd="@dimen/spacing_md"
-                        android:paddingTop="@dimen/spacing_md"
-                        android:paddingBottom="@dimen/spacing_md">
+                        android:padding="@dimen/spacing_md">
 
                         <FrameLayout
                             android:id="@+id/account_icon_bg"
@@ -139,10 +136,9 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:thumbTint="@color/background_white"
-                            app:trackTint="@color/primary_blue" />
+                            app:thumbTint="@color/switch_thumb_selector"
+                            app:trackTint="@color/switch_track_selector" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
@@ -172,14 +168,10 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <!-- Dark Mode -->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="@dimen/spacing_md"
-                        android:paddingEnd="@dimen/spacing_md"
-                        android:paddingTop="@dimen/spacing_md"
-                        android:paddingBottom="@dimen/spacing_md">
+                        android:padding="@dimen/spacing_md">
 
                         <FrameLayout
                             android:id="@+id/dark_mode_icon_bg"
@@ -194,7 +186,8 @@
                                 android:layout_height="@dimen/icon_medium"
                                 android:layout_gravity="center"
                                 android:src="@drawable/ic_moon"
-                                android:contentDescription="" />
+                                android:contentDescription=""
+                                app:tint="@color/primary_blue" />
                         </FrameLayout>
 
                         <TextView
@@ -213,24 +206,20 @@
                             android:id="@+id/dark_mode_toggle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:checked="false"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:thumbTint="@color/background_white"
-                            app:trackTint="@color/divider" />
+                            app:thumbTint="@color/switch_thumb_selector"
+                            app:trackTint="@color/switch_track_selector" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" android:layout_marginStart="68dp" />
 
-                    <!-- Language -->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="@dimen/spacing_md"
-                        android:paddingEnd="@dimen/spacing_md"
-                        android:paddingTop="@dimen/spacing_md"
-                        android:paddingBottom="@dimen/spacing_md">
+                        android:padding="@dimen/spacing_md"
+                        android:background="?attr/selectableItemBackground">
 
                         <FrameLayout
                             android:id="@+id/language_icon_bg"
@@ -245,11 +234,11 @@
                                 android:layout_height="@dimen/icon_medium"
                                 android:layout_gravity="center"
                                 android:src="@drawable/ic_globe"
-                                android:contentDescription="" />
+                                android:contentDescription=""
+                                app:tint="@color/primary_blue" />
                         </FrameLayout>
 
                         <LinearLayout
-                            android:id="@+id/language_text_block"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:orientation="vertical"
@@ -283,11 +272,10 @@
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- ===== SCANNING SECTION ===== -->
+            <!-- SCANNING SECTION -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -313,14 +301,10 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <!-- Auto-focus -->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="@dimen/spacing_md"
-                        android:paddingEnd="@dimen/spacing_md"
-                        android:paddingTop="@dimen/spacing_md"
-                        android:paddingBottom="@dimen/spacing_md">
+                        android:padding="@dimen/spacing_md">
 
                         <FrameLayout
                             android:id="@+id/autofocus_icon_bg"
@@ -335,7 +319,8 @@
                                 android:layout_height="@dimen/icon_medium"
                                 android:layout_gravity="center"
                                 android:src="@drawable/ic_autofocus"
-                                android:contentDescription="" />
+                                android:contentDescription=""
+                                app:tint="@color/primary_blue" />
                         </FrameLayout>
 
                         <TextView
@@ -358,20 +343,16 @@
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:thumbTint="@color/background_white"
-                            app:trackTint="@color/primary_blue" />
+                            app:thumbTint="@color/switch_thumb_selector"
+                            app:trackTint="@color/switch_track_selector" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
 
                     <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" android:layout_marginStart="68dp" />
 
-                    <!-- Flash -->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="@dimen/spacing_md"
-                        android:paddingEnd="@dimen/spacing_md"
-                        android:paddingTop="@dimen/spacing_md"
-                        android:paddingBottom="@dimen/spacing_md">
+                        android:padding="@dimen/spacing_md">
 
                         <FrameLayout
                             android:id="@+id/flash_icon_bg"
@@ -386,7 +367,8 @@
                                 android:layout_height="@dimen/icon_medium"
                                 android:layout_gravity="center"
                                 android:src="@drawable/ic_flashlight"
-                                android:contentDescription="" />
+                                android:contentDescription=""
+                                app:tint="@color/primary_blue" />
                         </FrameLayout>
 
                         <TextView
@@ -405,18 +387,16 @@
                             android:id="@+id/flash_toggle"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:checked="false"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent"
-                            app:thumbTint="@color/background_white"
-                            app:trackTint="@color/divider" />
+                            app:thumbTint="@color/switch_thumb_selector"
+                            app:trackTint="@color/switch_track_selector" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- ===== ABOUT SECTION ===== -->
+            <!-- ABOUT SECTION -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -442,14 +422,11 @@
                     android:layout_height="wrap_content"
                     android:orientation="vertical">
 
-                    <!-- Privacy Policy -->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="@dimen/spacing_md"
-                        android:paddingEnd="@dimen/spacing_md"
-                        android:paddingTop="@dimen/spacing_md"
-                        android:paddingBottom="@dimen/spacing_md">
+                        android:padding="@dimen/spacing_md"
+                        android:background="?attr/selectableItemBackground">
 
                         <FrameLayout
                             android:id="@+id/privacy_icon_bg"
@@ -464,7 +441,8 @@
                                 android:layout_height="@dimen/icon_medium"
                                 android:layout_gravity="center"
                                 android:src="@drawable/ic_shield"
-                                android:contentDescription="" />
+                                android:contentDescription=""
+                                app:tint="@color/primary_blue" />
                         </FrameLayout>
 
                         <TextView
@@ -485,6 +463,7 @@
                             android:layout_height="@dimen/icon_small"
                             android:src="@drawable/ic_external_link"
                             android:contentDescription=""
+                            app:tint="@color/text_secondary"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent" />
@@ -492,14 +471,11 @@
 
                     <View android:layout_width="match_parent" android:layout_height="1dp" android:background="@color/divider" android:layout_marginStart="68dp" />
 
-                    <!-- Terms of Service -->
                     <androidx.constraintlayout.widget.ConstraintLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:paddingStart="@dimen/spacing_md"
-                        android:paddingEnd="@dimen/spacing_md"
-                        android:paddingTop="@dimen/spacing_md"
-                        android:paddingBottom="@dimen/spacing_md">
+                        android:padding="@dimen/spacing_md"
+                        android:background="?attr/selectableItemBackground">
 
                         <FrameLayout
                             android:id="@+id/terms_icon_bg"
@@ -514,7 +490,8 @@
                                 android:layout_height="@dimen/icon_medium"
                                 android:layout_gravity="center"
                                 android:src="@drawable/ic_document"
-                                android:contentDescription="" />
+                                android:contentDescription=""
+                                app:tint="@color/primary_blue" />
                         </FrameLayout>
 
                         <TextView
@@ -535,15 +512,14 @@
                             android:layout_height="@dimen/icon_small"
                             android:src="@drawable/ic_external_link"
                             android:contentDescription=""
+                            app:tint="@color/text_secondary"
                             app:layout_constraintEnd_toEndOf="parent"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintBottom_toBottomOf="parent" />
                     </androidx.constraintlayout.widget.ConstraintLayout>
-
                 </LinearLayout>
             </com.google.android.material.card.MaterialCardView>
 
-            <!-- App version footer -->
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -554,7 +530,5 @@
                 android:layout_marginBottom="@dimen/spacing_xl" />
 
         </LinearLayout>
-
-    </LinearLayout>
-
-</androidx.core.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
+</LinearLayout>
